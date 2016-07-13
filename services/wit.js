@@ -119,6 +119,12 @@ if (require.main === module) {
 	client.interactive()
 }
 
+
+var logSpend = function(){
+
+}
+
+
 // GET WEATHER FROM API
 var getWeather = function (location) {
 	return new Promise(function (resolve, reject) {
