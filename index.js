@@ -4,7 +4,7 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const request = require('request')
 const app = express()
-
+/*
 let Wit = null;
 try {
   // if running from repo
@@ -21,6 +21,7 @@ const accessToken = (() => {
   }
   return process.argv[2];
 })();
+*/
 
 // Quickstart example
 // See https://wit.ai/ar7hur/quickstart
