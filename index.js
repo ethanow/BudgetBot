@@ -15,7 +15,8 @@ try {
 
 const accessToken = (() => {
   if (process.argv.length !== 3) {
-    console.log('usage: node examples/quickstart.js <wit-access-token>');
+    console.log('usage: node examples/quickstart.js EUNZK4RPON5MAIS46XELIJZWDSNFPFFG
+');
     process.exit(1);
   }
   return process.argv[2];
@@ -23,7 +24,7 @@ const accessToken = (() => {
 
 // Quickstart example
 // See https://wit.ai/ar7hur/quickstart
-
+/*
 const firstEntityValue = (entities, entity) => {
   const val = entities && entities[entity] &&
     Array.isArray(entities[entity]) &&
@@ -63,7 +64,7 @@ const actions = {
 const client = new Wit({accessToken, actions});
 client.interactive();
 
-
+*/
 
 
 app.set('port', (process.env.PORT || 5000))
