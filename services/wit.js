@@ -43,6 +43,7 @@ var actions = {
 	},
 
 	logSpend(sessionId, context, entities, message, cb){
+		console.log ('Into logSpend')
 		var amt = firstEntityValue(entities, 'amount_of_money')
 		if (amt) {
 			context.amt = amt
