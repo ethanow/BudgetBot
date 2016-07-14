@@ -89,7 +89,7 @@ var actions = {
 	error(sessionId, context, error) {
 		console.log(error.message)
 	},
-
+/*
 	// list of functions Wit.ai can execute
 	['fetch-weather'](sessionId, context, cb) {
 		// Here we can place an API call to a weather service
@@ -117,9 +117,10 @@ var actions = {
 
 	['logSpend'](sessionId, context, cb) {
 		console.log('here')
+		cb(context)
 	},
 }
-
+*/
 // SETUP THE WIT.AI SERVICE
 var getWit = function () {
 	console.log('GRABBING WIT')
@@ -151,12 +152,13 @@ var getWeather = function (location) {
 			})
 	})
 }
-
+*/
 // CHECK IF URL IS AN IMAGE FILE
 var checkURL = function (url) {
     return(url.match(/\.(jpeg|jpg|gif|png)$/) != null);
 }
 
+/*
 // LIST OF ALL PICS
 var allPics = {
   corgis: [
