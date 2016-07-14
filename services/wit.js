@@ -41,7 +41,7 @@ var actions = {
 		cb()
 		
 	},
-	/*
+
 	merge(sessionId, context, entities, message, cb) {
 		// Reset the weather story
 		delete context.forecast
@@ -71,10 +71,9 @@ var actions = {
 
 		cb(context)
 	},
-	*/
 
 	error(sessionId, context, error) {
-		console.log(error.message + 'i dont know why')
+		console.log(error.message)
 	},
 
 	// list of functions Wit.ai can execute
@@ -104,7 +103,7 @@ var actions = {
 
 	['logSpend'](sessionId, context, cb) {
 		console.log('here')
-	}
+	},
 }
 
 // SETUP THE WIT.AI SERVICE
