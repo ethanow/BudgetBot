@@ -61,6 +61,17 @@ var actions = {
 			context.cat = category
 		}
 
+		// Retrieve $ amount
+		var amount = firstEntityValue(entities,'amount_of_money')
+		if (amount) {
+			context.amount = amount
+		}
+
+		var dateTime = firstEntityValue(entities,'datetime')
+		if (dateTime){
+			context.dateTime = dateTime
+		}
+
 		// Retrieve the sentiment
 		var sentiment = firstEntityValue(entities, 'sentiment')
 		if (sentiment) {
@@ -132,6 +143,14 @@ var getWeather = function (location) {
 		    }
 			})
 	})
+}
+
+// Intent - logSpend (noDate)
+var logSpend = function (category,amount) {
+}
+
+// Intent - logSpendDate (with Date)
+var logSpendDate = function (category,amount,dateTime) {
 }
 
 // CHECK IF URL IS AN IMAGE FILE
