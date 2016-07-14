@@ -42,6 +42,19 @@ var actions = {
 		
 	},
 
+	logSpend(sessionId, context, entities, message, cb){
+		var amt = firstEntityValue(entities, 'amount_of_money')
+		if (amt) {
+			context.amt = amt
+		}
+
+		var cat = firstEntityValue(entities, 'category')
+		if (cat) {
+			context.cat = cat
+		}
+
+	},
+
 	merge(sessionId, context, entities, message, cb) {
 		// Reset the weather story
 		delete context.forecast
@@ -122,7 +135,7 @@ if (require.main === module) {
 	var client = getWit()
 	client.interactive()
 }
-
+/*
 // GET WEATHER FROM API
 var getWeather = function (location) {
 	return new Promise(function (resolve, reject) {
@@ -169,3 +182,4 @@ var allPics = {
     'http://blog.uprinting.com/wp-content/uploads/2011/09/Cute-Baby-Pictures-29.jpg',
   ],
 };
+*/
