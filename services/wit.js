@@ -68,8 +68,7 @@ var actions = {
 		
 	},
 
-	merge(sessionId, context, entities, message, cb) {
-
+	logSpend(sessionId, context, entities, message, cb){
 
 		// Retrieve the category
 		var category = firstEntityValue(entities, 'category')
@@ -83,19 +82,40 @@ var actions = {
 			context.amount = amount
 		}
 
-		var dateTime = firstEntityValue(entities,'datetime')
-		if (dateTime){
-			context.dateTime = datetime
+		var datetime = firstEntityValue(entities,'datetime')
+		if (datetime){
+			context.datetime = datetime
 		}
 
 		cb(context)
+
 	},
 
 	error(sessionId, context, error) {
 		console.log(error.message)
 	},
-}
 
+	// list of functions Wit.ai can execute
+	['logSpend'](sessionId, context, cb){
+
+		context.amount = amount_of_money
+		context.cat = category
+		console.log('Logging noDate')
+		cb(context)
+
+	},
+
+	['logSpendDate'](sessionId, context, cb){
+
+		context.amount = amount_of_money
+		context.cat = category
+		context.datetime = datetime
+		console.log('Logging withDate')
+		cb(context)
+
+	},
+	
+}
 
 // SETUP THE WIT.AI SERVICE
 var getWit = function () {
@@ -113,61 +133,3 @@ if (require.main === module) {
 	var client = getWit()
 	client.interactive()
 }
-/*
-// GET WEATHER FROM API
-var getWeather = function (location) {
-	return new Promise(function (resolve, reject) {
-		var url = 'https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22'+ location +'%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys'
-		request(url, function (error, response, body) {
-		    if (!error && response.statusCode == 200) {
-		    	var jsonData = JSON.parse(body)
-		    	var forecast = jsonData.query.results.channel.item.forecast[0].text
-		      console.log('WEATHER API SAYS....', jsonData.query.results.channel.item.forecast[0].text)
-		      return forecast
-		    }
-			})
-	})
-}
-
-
-// Intent - logSpend (noDate)
-var logSpend = function (category,amount) {
-	console.log('Logging noDate')
-}
-
-// Intent - logSpendDate (with Date)
-var logSpendDate = function (category,amount,dateTime) {
-	console.log('Logging withDate')
-}
-*/
-// CHECK IF URL IS AN IMAGE FILE
-var checkURL = function (url) {
-    return(url.match(/\.(jpeg|jpg|gif|png)$/) != null);
-}
-
-// LIST OF ALL PICS
-var allPics = {
-  corgis: [
-    'http://i.imgur.com/uYyICl0.jpeg',
-    'http://i.imgur.com/useIJl6.jpeg',
-    'http://i.imgur.com/LD242xr.jpeg',
-    'http://i.imgur.com/Q7vn2vS.jpeg',
-    'http://i.imgur.com/ZTmF9jm.jpeg',
-    'http://i.imgur.com/jJlWH6x.jpeg',
-		'http://i.imgur.com/ZYUakqg.jpeg',
-		'http://i.imgur.com/RxoU9o9.jpeg',
-  ],
-  racoons: [
-    'http://i.imgur.com/zCC3npm.jpeg',
-    'http://i.imgur.com/OvxavBY.jpeg',
-    'http://i.imgur.com/Z6oAGRu.jpeg',
-		'http://i.imgur.com/uAlg8Hl.jpeg',
-		'http://i.imgur.com/q0O0xYm.jpeg',
-		'http://i.imgur.com/BrhxR5a.jpeg',
-		'http://i.imgur.com/05hlAWU.jpeg',
-		'http://i.imgur.com/HAeMnSq.jpeg',
-  ],
-  default: [
-    'http://blog.uprinting.com/wp-content/uploads/2011/09/Cute-Baby-Pictures-29.jpg',
-  ],
-};
