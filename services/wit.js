@@ -5,7 +5,7 @@ var FB = require('../connectors/facebook')
 var Wit = require('node-wit').Wit
 var request = require('request')
 
-
+//Extract an entity value from the entities returned by Wit
 var firstEntityValue = function (entities, entity) {
 	var val = entities && entities[entity] &&
 		Array.isArray(entities[entity]) &&
@@ -17,6 +17,32 @@ var firstEntityValue = function (entities, entity) {
 	}
 	return typeof val === 'object' ? val.value : val
 }
+
+
+/*
+//Define your bot functions here
+const actions = {
+  send(request, response) {
+    const {sessionId, context, entities} = request;
+    const {text, quickreplies} = response;
+    return new Promise(function(resolve, reject) {
+        console.log('user said...', request.text);
+        console.log('sending...', JSON.stringify(response));
+        return resolve();
+    });
+  },
+  ['compute-result']({context,entities}) {
+    return new Promise(function(resolve, reject) {
+      const movie_title = firstEntityValue(entities, 'movie');
+      if (movie_title) {
+        context.movie = movie_title;
+      }
+      //call the API here
+      return resolve(context);
+  });
+ },
+};
+*/
 
 
 var actions = {
@@ -147,10 +173,12 @@ var getWeather = function (location) {
 
 // Intent - logSpend (noDate)
 var logSpend = function (category,amount) {
+	console.log('Logging noDate')
 }
 
 // Intent - logSpendDate (with Date)
 var logSpendDate = function (category,amount,dateTime) {
+	console.log('Logging withDate')
 }
 
 // CHECK IF URL IS AN IMAGE FILE
