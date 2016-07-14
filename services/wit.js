@@ -69,17 +69,6 @@ var actions = {
 	},
 
 	merge(sessionId, context, entities, message, cb) {
-		// Reset the weather story
-		//delete context.forecast
-
-		// Retrive the location entity and store it in the context field
-		//var loc = firstEntityValue(entities, 'location')
-		//if (loc) {
-			//context.loc = loc
-		//}
-
-		// Reset the cutepics story
-		//delete context.pics
 
 
 		// Retrieve the category
@@ -96,15 +85,7 @@ var actions = {
 
 		var dateTime = firstEntityValue(entities,'datetime')
 		if (dateTime){
-			context.dateTime = dateTime
-		}
-
-		// Retrieve the sentiment
-		var sentiment = firstEntityValue(entities, 'sentiment')
-		if (sentiment) {
-			context.ack = sentiment === 'positive' ? 'Glad your liked it!' : 'Aww, that sucks.'
-		} else {
-			delete context.ack
+			context.dateTime = datetime
 		}
 
 		cb(context)
@@ -113,32 +94,8 @@ var actions = {
 	error(sessionId, context, error) {
 		console.log(error.message)
 	},
-
-	// list of functions Wit.ai can execute
-	['fetch-weather'](sessionId, context, cb) {
-		// Here we can place an API call to a weather service
-		// if (context.loc) {
-		// 	getWeather(context.loc)
-		// 		.then(function (forecast) {
-		// 			context.forecast = forecast || 'sunny'
-		// 		})
-		// 		.catch(function (err) {
-		// 			console.log(err)
-		// 		})
-		// }
-
-		context.forecast = 'Sunny'
-
-		cb(context)
-	},
-
-	['fetch-pics'](sessionId, context, cb) {
-		var wantedPics = allPics[context.cat || 'default']
-		context.pics = wantedPics[Math.floor(Math.random() * wantedPics.length)]
-
-		cb(context)
-	},
 }
+
 
 // SETUP THE WIT.AI SERVICE
 var getWit = function () {
@@ -171,7 +128,7 @@ var getWeather = function (location) {
 			})
 	})
 }
-*/
+
 
 // Intent - logSpend (noDate)
 var logSpend = function (category,amount) {
@@ -182,7 +139,7 @@ var logSpend = function (category,amount) {
 var logSpendDate = function (category,amount,dateTime) {
 	console.log('Logging withDate')
 }
-
+*/
 // CHECK IF URL IS AN IMAGE FILE
 var checkURL = function (url) {
     return(url.match(/\.(jpeg|jpg|gif|png)$/) != null);
