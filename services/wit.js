@@ -70,16 +70,17 @@ var actions = {
 
 	merge(sessionId, context, entities, message, cb) {
 		// Reset the weather story
-		delete context.forecast
+		//delete context.forecast
 
 		// Retrive the location entity and store it in the context field
-		var loc = firstEntityValue(entities, 'location')
-		if (loc) {
-			context.loc = loc
-		}
+		//var loc = firstEntityValue(entities, 'location')
+		//if (loc) {
+			//context.loc = loc
+		//}
 
 		// Reset the cutepics story
-		delete context.pics
+		//delete context.pics
+
 
 		// Retrieve the category
 		var category = firstEntityValue(entities, 'category')
@@ -155,7 +156,7 @@ if (require.main === module) {
 	var client = getWit()
 	client.interactive()
 }
-
+/*
 // GET WEATHER FROM API
 var getWeather = function (location) {
 	return new Promise(function (resolve, reject) {
@@ -170,6 +171,7 @@ var getWeather = function (location) {
 			})
 	})
 }
+*/
 
 // Intent - logSpend (noDate)
 var logSpend = function (category,amount) {
