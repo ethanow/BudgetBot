@@ -9,13 +9,12 @@ var FB = require('./connectors/facebook')
 var Bot = require('./bot')
 
 
-
 // LETS MAKE A SERVER!
 var app = express()
 app.set('port', (process.env.PORT) || 5000)
 // SPIN UP SERVER
 app.listen(app.get('port'), function () {
-  console.log('Server started. Running on port', app.get('port'))
+  console.log('Running on port', app.get('port'))
 })
 // PARSE THE BODY
 app.use(bodyParser.json())
@@ -30,13 +29,9 @@ app.get('/', function (req, res) {
 app.get('/webhooks', function (req, res) {
   if (req.query['hub.verify_token'] === Config.FB_VERIFY_TOKEN) {
     res.send(req.query['hub.challenge'])
-    console.log('Verified on facebook')
   }
-  console.log ('Wrong token')
   res.send('Error, wrong token')
 })
-
-
 
 // to send messages to facebook
 app.post('/webhooks', function (req, res) {
@@ -50,13 +45,9 @@ app.post('/webhooks', function (req, res) {
       // SEND TO BOT FOR PROCESSING
       Bot.read(entry.sender.id, entry.message.text, function (sender, reply) {
         FB.newMessage(sender, reply)
-        console.log("Talking to..",entry.sender.id)
       })
     }
   }
+
   res.sendStatus(200)
-});
-
-
-
-
+})
