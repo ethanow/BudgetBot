@@ -33,7 +33,7 @@ app.get('/webhooks', function (req, res) {
   res.send('Error, wrong token')
 })
 
-// to send messages to facebook
+// to send and receive messages to facebook
 app.post('/webhooks', function (req, res) {
   var entry = FB.getMessageEntry(req.body)
   // IS THE ENTRY A VALID MESSAGE?
@@ -42,9 +42,11 @@ app.post('/webhooks', function (req, res) {
       // NOT SMART ENOUGH FOR ATTACHMENTS YET
       FB.newMessage(entry.sender.id, "That's interesting!")
     } else {
+      console.log("Received message from ",entry.sender.id)
       // SEND TO BOT FOR PROCESSING
       Bot.read(entry.sender.id, entry.message.text, function (sender, reply) {
-        FB.newMessage(sender, reply)
+        console.log ("Reply from bot ",reply)
+        //FB.newMessage(sender, reply)
       })
     }
   }
