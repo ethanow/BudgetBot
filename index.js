@@ -50,7 +50,7 @@ app.post('/webhooks', function (req, res) {
       // SEND TO BOT FOR PROCESSING
       Bot.read(entry.sender.id, entry.message.text, function (sender, reply) {
         FB.newMessage(sender, reply)
-        console.log("Talking to..",sender.id)
+        console.log("Talking to..",entry.sender.id)
       })
     }
   }
