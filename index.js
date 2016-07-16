@@ -45,7 +45,7 @@ app.post('/webhooks', function (req, res) {
       console.log("Received message from ",entry.sender.id)
       // SEND TO BOT FOR PROCESSING
       Bot.read(entry.sender.id, entry.message.text, function (sender, reply) {
-        console.log ("Reply from bot ",reply)
+        console.log ("Reply from bot ",reply, entry.receipient.id)
         FB.newMessage(sender, reply)
       })
     }
@@ -53,3 +53,6 @@ app.post('/webhooks', function (req, res) {
 
   res.sendStatus(200)
 })
+
+
+// wit.ai bot's ID: 910581902328591
