@@ -18,7 +18,7 @@ var newRequest = request.defaults({
 
 // SETUP A MESSAGE FOR THE FACEBOOK REQUEST
 var newMessage = function (recipientId, msg, atts, cb) {
-	console.log("FB.JS: newMessage from:"recipientId)
+	console.log("FB.JS: newMessage from:",recipientId)
 	var opts = {
 		form: {
 			recipient: {
