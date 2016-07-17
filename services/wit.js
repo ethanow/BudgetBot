@@ -34,8 +34,11 @@ var actions = {
 
 		// Pass message to FB
 		if (checkURL(message)) {
+			console.log('WIT.JS:calling FB.newMessage in true')
 			FB.newMessage(context._fbid_, message, true)
+
 		} else {
+			console.log('WIT.JS:calling FB.newMessage in else')
 			FB.newMessage(context._fbid_, message)
 		}
 
