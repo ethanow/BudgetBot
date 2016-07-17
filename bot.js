@@ -35,13 +35,13 @@ var read = function (sender, message, reply) {
 	// Let's find the user
 	var sessionId = findOrCreateSession(sender)
 	console.log ('user is ',sessionId)
-	
+
 	if (message === 'hello') {
 		// Let's reply back hello
 		message = 'Hello yourself! I am a chat bot. You can say "show me pics of corgis"'
 		reply(sender, message)
 	} else {
-		console.log('received message',message)
+		console.log('BOT.JS:Received message',message)
 
 
 		// Let's forward the message to the Wit.ai bot engine
@@ -56,7 +56,7 @@ var read = function (sender, message, reply) {
 			} else {
 				// Wit.ai ran all the actions
 				// Now it needs more messages
-				console.log('Waiting for further messages')
+				console.log('BOT.JS:Waiting for further messages')
 
 				// Based on the session state, you might want to reset the session
 				// Example:
