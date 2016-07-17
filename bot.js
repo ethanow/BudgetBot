@@ -52,7 +52,7 @@ var read = function (sender, message, reply) {
 			sessions[sessionId].context, // the user's session state
 			function (error, context) { // callback
 			if (error) {
-				console.log('oops!', error)
+				console.log('BOT.JS: Oops! Got an error from Wit:', error)
 			} else {
 				// Wit.ai ran all the actions
 				// Now it needs more messages
@@ -77,3 +77,5 @@ module.exports = {
 	findOrCreateSession: findOrCreateSession,
 	read: read,
 }
+
+
