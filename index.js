@@ -48,7 +48,7 @@ app.post('/webhooks', function (req, res) {
 
       // SEND TO BOT FOR PROCESSING bot.js read
       // Bot.read(entry.sender.id, entry.message.text, function (sender, reply) {
-      //   console.log ("INBOX.JS:Reply from bot ",reply)
+      //   console.log ("INDEX.JS:Reply from bot ",reply)
 
       //   // Reply to sender using facebook.js
       //   FB.newMessage(sender, reply)
