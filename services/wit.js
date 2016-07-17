@@ -47,12 +47,12 @@ var actions = {
 	merge(sessionId, context, entities, message, cb) {
 		// Reset the weather story
 		delete context.forecast
-		delete context.loc
 
 		// Retrive the location entity and store it in the context field
 		var loc = firstEntityValue(entities, 'location')
 		if (loc) {
 			context.loc = loc
+			console.log('WIT.JS:Merge location',loc)
 		}
 
 		// Reset the cutepics story
@@ -62,6 +62,7 @@ var actions = {
 		var category = firstEntityValue(entities, 'category')
 		if (category) {
 			context.cat = category
+			console.log('WIT.JS:Merge caterory',cat)
 		}
 
 		// Retrieve the sentiment
@@ -76,7 +77,7 @@ var actions = {
 	},
 
 	error(sessionId, context, error) {
-		console.log(error.message)
+		console.log("WIT.JS: Error",error.message)
 	},
 
 	// list of functions Wit.ai can execute

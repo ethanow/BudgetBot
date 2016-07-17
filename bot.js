@@ -42,8 +42,6 @@ var read = function (sender, message, reply) {
 		reply(sender, message)
 	} else {
 		console.log('BOT.JS:Received message',message)
-
-
 		// Let's forward the message to the Wit.ai bot engine
 		// This will run all actions until there are no more actions left to do
 		wit.runActions(
@@ -66,6 +64,7 @@ var read = function (sender, message, reply) {
 
 				// Updating the user's current session state
 				sessions[sessionId].context = context
+				console.log('BOT.JS:Updated context to',context)
 			}
 		})
 	}
