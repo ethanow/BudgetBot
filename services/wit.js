@@ -31,6 +31,8 @@ var actions = {
 		console.log('WIT.JS:WIT HAS SOMETHING TO SAY:', message)
 		console.log('WIT.JS:WIT HAS A CONTEXT:', context)
 
+
+		// Pass message to FB
 		if (checkURL(message)) {
 			FB.newMessage(context._fbid_, message, true)
 		} else {

@@ -34,7 +34,7 @@ var findOrCreateSession = function (fbid) {
 var read = function (sender, message, reply) {
 	// Let's find the user
 	var sessionId = findOrCreateSession(sender)
-	console.log ('user is ',sessionId)
+	console.log ('BOT.JS user is:',sessionId.fbid)
 
 	if (message === 'hello') {
 		// Let's reply back hello
