@@ -48,7 +48,14 @@ var actions = {
 	},
 
 	merge(sessionId, context, entities, message, cb) {
+		console.log('WIT.JS: Calling Merge')
 		// Reset the weather story
+		if (context.loc){
+			delete context.loc
+			console.log('WIT.JS:Deleting loc')
+		}
+
+			
 		delete context.forecast
 
 		// Retrive the location entity and store it in the context field
@@ -125,7 +132,7 @@ if (require.main === module) {
 	var client = getWit()
 	client.interactive()
 }
-
+/*
 // GET WEATHER FROM API
 var getWeather = function (location) {
 	return new Promise(function (resolve, reject) {
@@ -140,7 +147,7 @@ var getWeather = function (location) {
 			})
 	})
 }
-
+*/
 // CHECK IF URL IS AN IMAGE FILE
 var checkURL = function (url) {
     return(url.match(/\.(jpeg|jpg|gif|png)$/) != null);
