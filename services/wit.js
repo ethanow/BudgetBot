@@ -27,8 +27,22 @@ var actions = {
 			return
 		}
 
-		delete context
+		
 		console.log('WIT.JS:Delete old context')
+		if (context.loc){
+			delete context.loc
+			console.log('WIT.JS:Deleting loc')
+		}
+
+		if (context.logSpend){
+			delete context.logSpend
+			console.log('WIT.JS:Deleting logSpend')
+		}
+
+		if (context.amt){
+			delete context.amt
+			console.log('WIT.JS:Deleting logSpend')
+		}
 
 		console.log('WIT.JS:WIT WANTS TO TALK TO:', context._fbid_)
 		console.log('WIT.JS:WIT HAS SOMETHING TO SAY:', message)
@@ -53,10 +67,7 @@ var actions = {
 	merge(sessionId, context, entities, message, cb) {
 		console.log('WIT.JS: Calling Merge')
 		// Reset the weather story
-		if (context.loc){
-			delete context.loc
-			console.log('WIT.JS:Deleting loc')
-		}
+		
 
 		var amount = firstEntityValue(entities, 'amount_of_money')
 			if (amount) {
