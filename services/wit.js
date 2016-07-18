@@ -55,6 +55,12 @@ var actions = {
 			console.log('WIT.JS:Deleting loc')
 		}
 
+		var amount = firstEntityValue(entities, 'amount_of_money'){
+			if (amount) {
+				context.amt = amount
+				console.log('WIT.JS:Merge amount',amount)
+			}
+		}
 			
 		delete context.forecast
 
@@ -91,6 +97,13 @@ var actions = {
 	},
 
 	// list of functions Wit.ai can execute
+	['fetch-spend'](sessionId, context, cb) {
+		console.log('WIT.JS: Update context.logSpend')
+		context.logSpend = 'Logged'
+
+		cb(context)
+	}
+
 	['fetch-weather'](sessionId, context, cb) {
 		// Here we can place an API call to a weather service
 		// if (context.loc) {
@@ -102,7 +115,7 @@ var actions = {
 		// 			console.log(err)
 		// 		})
 		// }
-
+		console.log('WIT.JS: Update context.forecast')
 		context.forecast = 'Sunny'
 
 		cb(context)
