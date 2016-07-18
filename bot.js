@@ -35,7 +35,7 @@ var read = function (sender, message, reply) {
 	// Let's find the user
 	var sessionId = findOrCreateSession(sender)
 	console.log ('BOT.JS:user is:',sessionId.fbid)
-	console.log('BOT.JS:Starting context is',context)
+	//console.log('BOT.JS:Starting context is',context)
 
 	if (message === 'hello') {
 		// Let's reply back hello
@@ -65,7 +65,7 @@ var read = function (sender, message, reply) {
 
 				// clear context
 				// context = {}
-
+				console.log('BOT.JS:Now context to',context)
 				// Updating the user's current session state
 				sessions[sessionId].context = {}
 
