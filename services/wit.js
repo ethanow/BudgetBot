@@ -55,7 +55,7 @@ var actions = {
 			console.log('WIT.JS:Deleting loc')
 		}
 
-		var amount = firstEntityValue(entities, 'amount_of_money'){
+		var amount = firstEntityValue(entities, 'amount'){
 			if (amount) {
 				context.amt = amount
 				console.log('WIT.JS:Merge amount',amount)
