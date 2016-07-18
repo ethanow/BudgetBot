@@ -102,7 +102,7 @@ var actions = {
 		context.logSpend = 'Logged'
 
 		cb(context)
-	}
+	},
 
 	['fetch-weather'](sessionId, context, cb) {
 		// Here we can place an API call to a weather service
