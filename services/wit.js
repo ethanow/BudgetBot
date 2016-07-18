@@ -27,6 +27,9 @@ var actions = {
 			return
 		}
 
+		delete context
+		console.log('WIT.JS:Delete old context')
+
 		console.log('WIT.JS:WIT WANTS TO TALK TO:', context._fbid_)
 		console.log('WIT.JS:WIT HAS SOMETHING TO SAY:', message)
 		console.log('WIT.JS:WIT HAS A CONTEXT:', context)
