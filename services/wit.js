@@ -44,7 +44,7 @@ var actions = {
 			console.log('WIT.JS:Deleting logSpend')
 		}
 
-		console.log('WIT.JS:WIT WANTS TO TALK TO:', context._fbid_)
+		console.log('WIT.JS:WIT WANTS TO TALK TO:', sessionId)
 		console.log('WIT.JS:WIT HAS SOMETHING TO SAY:', message)
 		console.log('WIT.JS:WIT HAS A CONTEXT:', context)
 
@@ -52,11 +52,11 @@ var actions = {
 		// Pass message to FB
 		if (checkURL(message)) {
 			console.log('WIT.JS:calling FB.newMessage in true')
-			FB.newMessage(context._fbid_, message, true)
+			FB.newMessage(sessionId, message, true)
 
 		} else {
 			console.log('WIT.JS:calling FB.newMessage in else')
-			FB.newMessage(context._fbid_, message)
+			FB.newMessage(sessionId, message)
 		}
 
 		
