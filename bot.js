@@ -58,12 +58,12 @@ var read = function (sender, message, reply) {
 
 				// Based on the session state, you might want to reset the session
 				// Example:
-				if (context['done']) {
-					delete sessions[sessionId]
-				}
+				// if (context['done']) {
+				// 	delete sessions[sessionId]
+				// }
 
 				// Updating the user's current session state
-				sessions[sessionId].context = 'done'
+				sessions[sessionId].context = context
 				console.log('BOT.JS:Updated context to',context)
 			}
 		})
