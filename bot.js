@@ -35,6 +35,7 @@ var read = function (sender, message, reply) {
 	// Let's find the user
 	var sessionId = findOrCreateSession(sender)
 	console.log ('BOT.JS:user is:',sessionId.fbid)
+	var fbid_temp = sessionId.fbid
 	//console.log('BOT.JS:Starting context is',context)
 
 	if (message === 'hello') {
@@ -56,7 +57,7 @@ var read = function (sender, message, reply) {
 				// Wit.ai ran all the actions
 				// Now it needs more messages
 				console.log('BOT.JS:Waiting for further messages')
-
+				fbid_temp = sessions[sessionId].context._fbid_
 				// Based on the session state, you might want to reset the session
 				// Example:
 				// if (context['done']) {
@@ -68,7 +69,7 @@ var read = function (sender, message, reply) {
 				console.log('BOT.JS:Now context to',context)
 				// Updating the user's current session state
 				sessions[sessionId].context = {}
-				sessions[sessionId].context._fbid_ = sessionId
+				sessions[sessionId].context._fbid_ = fbid_temp
 
 
 				console.log('BOT.JS:Updated context to',context)
