@@ -56,8 +56,8 @@ var actions = {
 			FB.newMessage(context._fbid_, message, true)
 
 		} else {
-			console.log('WIT.JS:calling FB.newMessage in else')
-			FB.newMessage(context._fbid_, message)
+			console.log('WIT.JS: No message')
+			//FB.newMessage(context._fbid_, message)
 		}
 
 		
@@ -112,16 +112,11 @@ var actions = {
 	},
 
 	// list of functions Wit.ai can execute
-	['fetch-spend'](sessionId, context, cb) {
-		console.log('WIT.JS: Update context.logSpend')
-		context.logSpend = 'Logged'
-
-		cb(context)
-	},
-
 	['logSpend'](sessionId, context, cb) {
 		console.log('WIT.JS: Update context.logSpend')
 		context.logSpend = 'Logged'
+
+		// Insert API call to save the amount_of_money
 
 		cb(context)
 	},
@@ -140,13 +135,6 @@ var actions = {
 		// }
 		console.log('WIT.JS: Update context.forecast')
 		context.forecast = 'Sunny'
-
-		cb(context)
-	},
-
-	['fetch-pics'](sessionId, context, cb) {
-		var wantedPics = allPics[context.cat || 'default']
-		context.pics = wantedPics[Math.floor(Math.random() * wantedPics.length)]
 
 		cb(context)
 	},
