@@ -119,6 +119,14 @@ var actions = {
 		cb(context)
 	},
 
+	['logSpend'](sessionId, context, cb) {
+		console.log('WIT.JS: Update context.logSpend')
+		context.logSpend = 'Logged'
+
+		cb(context)
+	},
+
+
 	['fetch-weather'](sessionId, context, cb) {
 		// Here we can place an API call to a weather service
 		// if (context.loc) {
