@@ -107,7 +107,7 @@ var actions = {
 	
 	['logSpend'](sessionId, context, cb) {
 		console.log('WIT.JS: Update context.logSpend')
-		context.logSpend = context
+		context.logSpend = 'Logged'
 
 		// Insert API call to save the amount_of_money
 
