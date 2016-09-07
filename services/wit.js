@@ -24,7 +24,7 @@ const actions = {
     console.log('sending...', JSON.stringify(response));
     return Promise.resolve();
   },
-  merge({entities, context, message, sessionId}) {
+  merge(entities, context, message, sessionId) {
     return new Promise(function(resolve, reject) {
       delete context.joke;
       const category = firstEntityValue(entities, 'category');
@@ -34,7 +34,7 @@ const actions = {
       return resolve(context);
     });
   },
-  ['logSpend']({entities, context}) {
+  ['logSpend'](entities, context) {
     return new Promise(function(resolve, reject) {
       // const category = firstEntityValue(entities, 'category') || 'default';
       // const sentiment = firstEntityValue(entities, 'sentiment');
