@@ -57,6 +57,19 @@ var actions = {
 		
 	},
 
+	logSpend(sessionId, context, entities, message, cb) {
+		console.log('WIT.JS: Calling logSpend')
+		context.logSpend = 'Logged'
+		
+
+		var amount = firstEntityValue(entities, 'amount_of_money')
+			if (amount) {
+				context.amt = amount
+				console.log('WIT.JS: Logged amount',amount)
+			}
+
+	},
+
 	merge(sessionId, context, entities, message, cb) {
 		console.log('WIT.JS: Calling Merge')
 		// Reset the weather story
