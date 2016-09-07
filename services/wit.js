@@ -30,12 +30,10 @@ var actions = {
 
 		
 		console.log('WIT.JS:Delete old context')
-		/*
 		if (context.loc){
 			delete context.loc
 			console.log('WIT.JS:Deleting loc')
 		}
-		*/
 
 		if (context.logSpend){
 			delete context.logSpend
@@ -55,11 +53,10 @@ var actions = {
 		// Pass message to FB
 		FB.newMessage(context._fbid_, message)	
 
-		
 		cb()
 		
 	},
-/*
+
 	merge(sessionId, context, entities, message, cb) {
 		console.log('WIT.JS: Calling Merge')
 		// Reset the weather story
@@ -101,28 +98,22 @@ var actions = {
 
 		cb(context)
 	},
-*/
 
 	error(sessionId, context, error) {
 		console.log("WIT.JS: Error",error.message)
 	},
 
 	// list of functions Wit.ai can execute
-	['logSpend'](sessionId, context, entities, message, cb) {
+	/*
+	['logSpend'](sessionId, context, cb) {
 		console.log('WIT.JS: Update context.logSpend')
 		context.logSpend = 'Logged'
-
-		var amount = firstEntityValue(entities, 'amount_of_money')
-			if (amount) {
-				context.amt = amount
-				console.log('WIT.JS:Logging amount',amount)
-			}
 
 		// Insert API call to save the amount_of_money
 
 		cb(context)
 	},
-
+	*/
 
 	['fetch-weather'](sessionId, context, cb) {
 		// Here we can place an API call to a weather service
