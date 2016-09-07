@@ -109,13 +109,13 @@ var actions = {
 	['logSpend'](sessionId, context, cb) {
 		console.log('WIT.JS: Update context.logSpend')
 		context.logSpend = 'Logged'
-
+/*
 		var amount = firstEntityValue(entities, 'amount_of_money')
 			if (amount) {
 				context.amt = amount
 				console.log('WIT.JS: Logged amount',amount)
 			}
-
+*/
 		// Insert API call to save the amount_of_money
 
 		cb(context)
