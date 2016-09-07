@@ -3,6 +3,8 @@
 var express = require('express')
 var bodyParser = require('body-parser')
 var request = require('request')
+var fetch = require('node-fetch')
+var crypto = require('crypto')
 
 var Config = require('./config')
 var FB = require('./connectors/facebook')
@@ -32,6 +34,8 @@ app.get('/webhooks', function (req, res) {
   }
   res.send('Error, wrong token')
 })
+
+console.log("I'm live!")
 
 // to send and receive messages to facebook
 app.post('/webhooks', function (req, res) {

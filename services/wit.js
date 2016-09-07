@@ -3,6 +3,7 @@
 var Config = require('../config')
 var FB = require('../connectors/facebook')
 var Wit = require('node-wit').Wit
+var log = require('node-wit').log
 var request = require('request')
 
 
