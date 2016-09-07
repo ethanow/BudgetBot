@@ -19,42 +19,7 @@ var firstEntityValue = function (entities, entity) {
 	return typeof val === 'object' ? val.value : val
 }
 
-const actions = {
-  send(request, response) {
-    console.log('sending...', JSON.stringify(response));
-    return Promise.resolve();
-  },
-  merge(entities, context, message, sessionId) {
-    return new Promise(function(resolve, reject) {
-      delete context.joke;
-      const category = firstEntityValue(entities, 'category');
-      if (category) {
-        context.cat = category;
-      }
-      return resolve(context);
-    });
-  },
-  ['logSpend'](entities, context) {
-    return new Promise(function(resolve, reject) {
-      // const category = firstEntityValue(entities, 'category') || 'default';
-      // const sentiment = firstEntityValue(entities, 'sentiment');
-      // if (sentiment) {
-      //   context.ack = sentiment === 'positive' ? 'Glad you liked it.' : 'Hmm.';
-      // } else {
-      //   delete context.ack;
-      // }
 
-      
-      context.amount = entities;
-      return resolve(context);
-    });
-  },
-};
-
-const client = new Wit(accessToken, actions);
-interactive(client);
-
-/*
 var actions = {
 	say (sessionId, context, message, cb) {
 		// Bot testing mode, run cb() and return
@@ -63,6 +28,7 @@ var actions = {
 			return
 		}
 
+		
 		console.log('WIT.JS:Delete old context')
 		if (context.loc){
 			delete context.loc
@@ -144,12 +110,6 @@ var actions = {
 		console.log('WIT.JS: Update context.logSpend')
 		context.logSpend = 'Logged'
 
-		var amount = firstEntityValue(entities, 'amount_of_money')
-			if (amount) {
-				context.amt = amount
-				console.log('WIT.JS: Logged amount',amount)
-			}
-
 		// Insert API call to save the amount_of_money
 
 		cb(context)
@@ -189,7 +149,7 @@ if (require.main === module) {
 	console.log('Bot testing mode!')
 	var client = getWit()
 	client.interactive()
-};
+}
 /*
 // GET WEATHER FROM API
 var getWeather = function (location) {
@@ -206,4 +166,34 @@ var getWeather = function (location) {
 	})
 }
 */
+// CHECK IF URL IS AN IMAGE FILE
+var checkURL = function (url) {
+    return(url.match(/\.(jpeg|jpg|gif|png)$/) != null);
+}
 
+// LIST OF ALL PICS
+var allPics = {
+  corgis: [
+    'http://i.imgur.com/uYyICl0.jpeg',
+    'http://i.imgur.com/useIJl6.jpeg',
+    'http://i.imgur.com/LD242xr.jpeg',
+    'http://i.imgur.com/Q7vn2vS.jpeg',
+    'http://i.imgur.com/ZTmF9jm.jpeg',
+    'http://i.imgur.com/jJlWH6x.jpeg',
+		'http://i.imgur.com/ZYUakqg.jpeg',
+		'http://i.imgur.com/RxoU9o9.jpeg',
+  ],
+  racoons: [
+    'http://i.imgur.com/zCC3npm.jpeg',
+    'http://i.imgur.com/OvxavBY.jpeg',
+    'http://i.imgur.com/Z6oAGRu.jpeg',
+		'http://i.imgur.com/uAlg8Hl.jpeg',
+		'http://i.imgur.com/q0O0xYm.jpeg',
+		'http://i.imgur.com/BrhxR5a.jpeg',
+		'http://i.imgur.com/05hlAWU.jpeg',
+		'http://i.imgur.com/HAeMnSq.jpeg',
+  ],
+  default: [
+    'http://blog.uprinting.com/wp-content/uploads/2011/09/Cute-Baby-Pictures-29.jpg',
+  ],
+};
