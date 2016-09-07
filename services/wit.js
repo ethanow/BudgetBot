@@ -62,10 +62,10 @@ var actions = {
 		console.log('WIT.JS: Calling Merge')
 		// Reset the amount
 		
-	  delete context.amt;
+	  delete context.cat;
     const category = firstEntityValue(entities, 'category');
     if (category) {
-      context.amt = category;
+      context.cat = category;
       console.log('WIT.JS: Merge amount')
     }
 		/*
@@ -107,7 +107,7 @@ var actions = {
 	
 	['logSpend'](sessionId, context, cb) {
 		console.log('WIT.JS: Update context.logSpend')
-		context.logSpend = 'Logged'
+		context.logSpend = context
 
 		// Insert API call to save the amount_of_money
 
