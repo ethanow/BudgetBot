@@ -60,16 +60,15 @@ var actions = {
 
 	merge(sessionId, context, entities, message, cb) {
 		console.log('WIT.JS: Calling Merge')
-		// Reset the weather story
+		// Reset the amount
 		
-
-		var amount = firstEntityValue(entities, 'amount_of_money')
-			if (amount) {
-				context.amt = amount
-				console.log('WIT.JS:Merge amount',amount)
-			}
-		
-			
+	  delete context.amt;
+    const category = firstEntityValue(entities, 'category');
+    if (category) {
+      context.amt = category;
+      console.log('WIT.JS: Merge amount')
+    }
+		/*
 		delete context.forecast
 
 		// Retrive the location entity and store it in the context field
@@ -96,7 +95,7 @@ var actions = {
 		} else {
 			delete context.ack
 		}
-
+		*/
 		cb(context)
 	},
 
