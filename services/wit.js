@@ -57,7 +57,7 @@ var actions = {
 
 		} else {
 			console.log('WIT.JS: No message')
-			//FB.newMessage(context._fbid_, message)
+			FB.newMessage(context._fbid_, message)
 		}
 
 		
