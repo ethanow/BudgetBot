@@ -51,7 +51,7 @@ const actions = {
   },
 };
 
-const client = new Wit({accessToken, actions});
+const client = new Wit(accessToken, actions);
 interactive(client);
 
 /*
