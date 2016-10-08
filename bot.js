@@ -14,6 +14,8 @@ var findOrCreateSession = function (fbid) {
     if (sessions[k].fbid === fbid) {
       // YUP
       sessionId = k
+      sessions[sessionId].context = {
+        _fbid_: fbid
     }
   })
 
@@ -57,20 +59,15 @@ var read = function (sender, message, reply) {
 				// Wit.ai ran all the actions
 				// Now it needs more messages
 				console.log('BOT.JS:Waiting for further messages')
-				fbid_temp = sessions[sessionId].context._fbid_
 				// Based on the session state, you might want to reset the session
 				// Example:
 				// if (context['done']) {
 				// 	delete sessions[sessionId]
 				// }
 
-				// clear context
-				// context = {}
-				console.log('BOT.JS:Now context to',context)
+				// clear context				
 				// Updating the user's current session state
 				sessions[sessionId].context = {}
-				sessions[sessionId].context._fbid_ = fbid_temp
-
 
 				console.log('BOT.JS:Updated context to',context)
 			}
