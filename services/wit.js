@@ -40,7 +40,7 @@ var actions = {
 	},
 
 	merge(sessionId, context, entities, message, cb) {
-		console.log('WIT.JS: Calling Merge')
+		console.log('WIT.JS: Calling Merge and the entities are', entities)
 		
 		// Reset the category
 	  delete context.category;
