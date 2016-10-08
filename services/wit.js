@@ -35,11 +35,9 @@ var actions = {
 
 		// Pass message to FB
 		FB.newMessage(context._fbid_, message)	
-
 		cb()
 		
 	},
-
 
 	merge(sessionId, context, entities, message, cb) {
 		console.log('WIT.JS: Calling Merge')
@@ -59,34 +57,6 @@ var actions = {
       console.log('WIT.JS: Merge amount is $',amt)
     }
 
-		/*
-		delete context.forecast
-
-		// Retrive the location entity and store it in the context field
-		var loc = firstEntityValue(entities, 'location')
-		if (loc) {
-			context.loc = loc
-			console.log('WIT.JS:Merge location',loc)
-		}
-
-		// Reset the cutepics story
-		delete context.pics
-
-		// Retrieve the category
-		var category = firstEntityValue(entities, 'category')
-		if (category) {
-			context.cat = category
-			console.log('WIT.JS:Merge caterory',cat)
-		}
-
-		// Retrieve the sentiment
-		var sentiment = firstEntityValue(entities, 'sentiment')
-		if (sentiment) {
-			context.ack = sentiment === 'positive' ? 'Glad your liked it!' : 'Aww, that sucks.'
-		} else {
-			delete context.ack
-		}
-		*/
 		cb(context)
 	},
 

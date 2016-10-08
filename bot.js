@@ -16,6 +16,7 @@ var findOrCreateSession = function (fbid) {
       sessionId = k
       sessions[sessionId].context = {
         _fbid_: fbid
+      }
     }
   })
 
@@ -48,6 +49,7 @@ var read = function (sender, message, reply) {
 		console.log('BOT.JS:Received message',message)
 		// Let's forward the message to the Wit.ai bot engine
 		// This will run all actions until there are no more actions left to do
+		
 		wit.runActions(
 			sessionId, // the user's current session by id
 			message,  // the user's message
