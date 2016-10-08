@@ -12,7 +12,7 @@ var findOrCreateSession = function (fbid) {
   // DOES USER SESSION ALREADY EXIST?
   Object.keys(sessions).forEach(k => {
     if (sessions[k].fbid === fbid) {
-      // YUP
+      // If yes, assisgn the fbid back to the context.fbid
       sessionId = k
       sessions[sessionId].context = {
         _fbid_: fbid
@@ -61,11 +61,6 @@ var read = function (sender, message, reply) {
 				// Wit.ai ran all the actions
 				// Now it needs more messages
 				console.log('BOT.JS:Waiting for further messages')
-				// Based on the session state, you might want to reset the session
-				// Example:
-				// if (context['done']) {
-				// 	delete sessions[sessionId]
-				// }
 
 				// clear context				
 				// Updating the user's current session state

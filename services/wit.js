@@ -40,9 +40,6 @@ var actions = {
 	},
 
 	merge(sessionId, context, entities, message, cb) {
-		console.log('WIT.JS: Calling Merge and the entities are', entities)
-		
-		
 	  
     var cat = firstEntityValue(entities, 'category');
     if (cat) {
@@ -68,9 +65,11 @@ var actions = {
 	
 	['logSpend'](sessionId, context, cb) {
 		console.log('WIT.JS: Update context.logSpend with ', context.amount, context.category)
-		// Insert function to save the amt and cat
+		
+		// Insert function to save the amount and category
+		// If successful context.logSpend = 'Logged' else run missing branch flow
 
-
+		// Hardcoded for now
 		context.logSpend = 'Logged'
 		// Reset the story
 		delete context.category;
