@@ -42,17 +42,17 @@ var actions = {
 	merge(sessionId, context, entities, message, cb) {
 		console.log('WIT.JS: Calling Merge and the entities are', entities)
 		
-		// Reset the category
-	  //delete context.category;
-    const cat = firstEntityValue(entities, 'category');
-    if (category) {
+		
+	  
+    var cat = firstEntityValue(entities, 'category');
+    if (cat) {
       context.category = cat;
       console.log('WIT.JS: Merge category is ', cat)
     }
 
-   	//delete context.amount;
+   	
     var amt = firstEntityValue(entities, 'amount_of_money');
-    if (category) {
+    if (amt) {
       context.amount = amt;
       console.log('WIT.JS: Merge amount is $',amt)
     }
@@ -67,10 +67,14 @@ var actions = {
 	// list of functions Wit.ai can execute
 	
 	['logSpend'](sessionId, context, cb) {
-		console.log('WIT.JS: Update context.logSpend with amount', context.amount, context.category)
-		context.logSpend = 'Logged'
-
+		console.log('WIT.JS: Update context.logSpend with ', context.amount, context.category)
 		// Insert function to save the amt and cat
+
+
+		context.logSpend = 'Logged'
+		// Reset the story
+		delete context.category;
+		delete context.amount;
 
 		cb(context)
 	},
