@@ -43,14 +43,14 @@ var actions = {
 		console.log('WIT.JS: Calling Merge and the entities are', entities)
 		
 		// Reset the category
-	  delete context.category;
+	  //delete context.category;
     const cat = firstEntityValue(entities, 'category');
     if (category) {
       context.category = cat;
       console.log('WIT.JS: Merge category is ', cat)
     }
 
-   	delete context.amount;
+   	//delete context.amount;
     var amt = firstEntityValue(entities, 'amount_of_money');
     if (category) {
       context.amount = amt;
