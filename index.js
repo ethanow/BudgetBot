@@ -10,6 +10,8 @@ var Config = require('./config')
 var FB = require('./connectors/facebook')
 var Bot = require('./bot')
 
+const FB_PROFILE_ENDPOINT = "https://graph.facebook.com/v2.6/";
+
 
 // LETS MAKE A SERVER!
 var app = express()
@@ -37,6 +39,18 @@ app.get('/webhooks', function (req, res) {
 
 console.log("I'm live!")
 
+var MongoClient = require('mongodb').MongoClient
+ , assert = require('assert');
+
+// Connection URL
+ var url = 'mongodb://heroku_lx50p828:f6tfa855041uh884cnroaj994m@ds139277.mlab.com:39277/heroku_lx50p828';
+// Use connect method to connect to the Server
+MongoClient.connect(url, function(err, db) {
+ assert.equal(null, err);
+ console.log("Connected correctly to server");
+ db.close();
+});
+
 // to send and receive messages to facebook
 app.post('/webhooks', function (req, res) {
   var entry = FB.getMessageEntry(req.body)
@@ -61,5 +75,15 @@ app.post('/webhooks', function (req, res) {
   res.sendStatus(200)
 })
 
-
+FB.api('fql', { q: [
+    'SELECT uid FROM user WHERE uid=me()',
+      'SELECT name FROM user WHERE uid=me()'
+] }, function(res) {
+    if(!res || res.error) {
+          console.log(!res ? 'error occurred' : res.error);
+              return;
+                }
+      console.log(res.data[0].fql_result_set);
+        console.log(res.data[1].fql_result_set);
+});
 // wit.ai bot's ID: 910581902328591
