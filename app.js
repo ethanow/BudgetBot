@@ -1,3 +1,5 @@
+/*
+
 var MongoClient = require('mongodb').MongoClient
   , assert = require('assert');
 
@@ -10,3 +12,5 @@ MongoClient.connect(url, function(err, db) {
 
   db.close();
 });
+
+*/
